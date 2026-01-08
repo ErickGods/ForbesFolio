@@ -2,6 +2,9 @@ import { useState, useCallback, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './FeaturedWork.css'
 
+// Base URL for images (works for both dev and GitHub Pages)
+const BASE_URL = import.meta.env.BASE_URL
+
 // ============================================
 // DATA - Extracted outside component to prevent re-renders
 // ============================================
@@ -9,7 +12,7 @@ const WORKS_DATA = [
     {
         id: 1,
         title: 'Brand Identity Design',
-        coverImage: './images/Forbes-Logo.jpg',
+        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
         category: 'Branding',
         year: '2024',
         description: 'A complete visual identity overhaul for a luxury fashion brand, including logo design, color palette, typography system, and comprehensive brand guidelines.',
@@ -19,7 +22,7 @@ const WORKS_DATA = [
     {
         id: 2,
         title: 'E-Commerce Platform',
-        coverImage: './images/Forbes-Logo.jpg',
+        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
         category: 'Web Development',
         year: '2024',
         description: 'Full-stack development of a modern e-commerce platform with seamless checkout experience, inventory management, and analytics dashboard.',
@@ -29,7 +32,7 @@ const WORKS_DATA = [
     {
         id: 3,
         title: 'Mobile Banking App',
-        coverImage: './images/Forbes-Logo.jpg',
+        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
         category: 'UI/UX Design',
         year: '2023',
         description: 'User experience design and interface development for a fintech startup, focusing on intuitive navigation and security-first approach.',
@@ -39,7 +42,7 @@ const WORKS_DATA = [
     {
         id: 4,
         title: 'Corporate Website Redesign',
-        coverImage: './images/Forbes-Logo.jpg',
+        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
         category: 'Web Design',
         year: '2023',
         description: 'Complete redesign of a Fortune 500 company website with improved accessibility, performance optimization, and modern visual language.',
@@ -49,7 +52,7 @@ const WORKS_DATA = [
     {
         id: 5,
         title: 'SaaS Dashboard',
-        coverImage: './images/Forbes-Logo.jpg',
+        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
         category: 'Product Design',
         year: '2023',
         description: 'Complex data visualization dashboard for enterprise analytics platform, featuring real-time updates and customizable widgets.',
@@ -57,6 +60,7 @@ const WORKS_DATA = [
         role: 'Product Designer',
     },
 ]
+
 
 const TOTAL_PAGES = WORKS_DATA.length
 

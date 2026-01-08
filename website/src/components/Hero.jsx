@@ -20,7 +20,7 @@ function Hero() {
                 </div>
                 <div className="hero-visual">
                     <div className="hero-image-frame">
-                        <img src="./images/mySelf.jpg" alt="ForbesFolio" className="hero-image" />
+                        <img src={`${import.meta.env.BASE_URL}images/mySelf.jpg`} alt="ForbesFolio" className="hero-image" />
                     </div>
                 </div>
             </div>
