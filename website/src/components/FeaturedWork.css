@@ -1,0 +1,541 @@
+.featured-work {
+    background-color: var(--color-gray-100);
+    overflow: hidden;
+}
+
+.featured-work-intro {
+    max-width: 500px;
+    margin: var(--spacing-sm) auto 0;
+    font-size: 1.125rem;
+}
+
+/* Magazine Container */
+.magazine-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    perspective: 2000px;
+}
+
+/* Navigation Arrows */
+.magazine-nav {
+    width: 60px;
+    height: 60px;
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    flex-shrink: 0;
+}
+
+.magazine-nav:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.magazine-nav:hover .nav-arrow {
+    color: var(--color-white);
+}
+
+.magazine-nav.disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.magazine-nav.disabled:hover {
+    background: var(--color-white);
+    border-color: var(--color-gray-200);
+}
+
+.magazine-nav.disabled:hover .nav-arrow {
+    color: var(--color-black);
+}
+
+.nav-arrow {
+    font-size: 2rem;
+    color: var(--color-black);
+    transition: color var(--transition-fast);
+    line-height: 1;
+}
+
+/* Magazine Spread */
+.magazine-spread {
+    display: flex;
+    max-width: 900px;
+    height: 500px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    overflow: hidden;
+}
+
+/* Magazine Pages Wrapper for Framer Motion */
+.magazine-pages-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* Magazine Pages */
+.magazine-page {
+    width: 450px;
+    height: 500px;
+    background: var(--color-white);
+    position: relative;
+    transition: transform 0.6s ease;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.magazine-page-left {
+    background: linear-gradient(135deg, var(--color-gray-200) 0%, var(--color-gray-300) 100%);
+    border-right: 1px solid var(--color-gray-200);
+    transform-origin: right center;
+    position: relative;
+}
+
+/* Dynamic shadow overlay on left page during flip */
+.page-shadow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.15) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Shadow on right page during flip */
+.page-flip-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.magazine-page-right {
+    transform-origin: left center;
+}
+
+/* Page Flip Animation */
+.magazine-page-left.flipping-prev {
+    animation: flipLeft 0.6s ease forwards;
+}
+
+.magazine-page-right.flipping-next {
+    animation: flipRight 0.6s ease forwards;
+}
+
+@keyframes flipRight {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateY(-90deg);
+    }
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes flipLeft {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    50% {
+        transform: rotateY(90deg);
+    }
+
+    100% {
+        transform: rotateY(0deg);
+    }
+}
+
+/* Page Image (Left) */
+.page-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-gray-300) 0%, var(--color-gray-200) 100%);
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+    overflow: hidden;
+}
+
+/* Cover Image */
+.cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+}
+
+/* Overlay gradient for better text readability */
+.page-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.3) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.page-category {
+    background: var(--color-black);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.page-overlay {
+    position: absolute;
+    bottom: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 2;
+}
+
+.page-number {
+    font-family: var(--font-serif);
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Page Content (Right) */
+.page-content {
+    padding: var(--spacing-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.meta-year {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-gold);
+}
+
+.meta-divider {
+    color: var(--color-gray-300);
+}
+
+.meta-client {
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+}
+
+.page-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-black);
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+.page-description {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-gray-600);
+    flex-grow: 1;
+}
+
+.page-role {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.role-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gray-600);
+    margin-right: 0.5rem;
+}
+
+.role-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.page-indicator {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-gray-300);
+    transition: background var(--transition-fast);
+}
+
+.indicator-dot.active {
+    background: var(--color-gold);
+}
+
+.page-count {
+    font-size: 0.75rem;
+    color: var(--color-gray-600);
+    letter-spacing: 0.05em;
+}
+
+/* Thumbnails */
+.magazine-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: var(--spacing-sm);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    min-width: 120px;
+}
+
+.thumbnail:hover {
+    border-color: var(--color-gold);
+}
+
+.thumbnail.active {
+    border-color: var(--color-gold);
+    background: var(--color-black);
+}
+
+.thumbnail.active .thumbnail-number,
+.thumbnail.active .thumbnail-title {
+    color: var(--color-white);
+}
+
+.thumbnail-number {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+.thumbnail-title {
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-gray-600);
+    text-align: center;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .magazine-spread {
+        max-width: 700px;
+        height: 400px;
+    }
+
+    .magazine-page {
+        width: 350px;
+        height: 400px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-number {
+        font-size: 4rem;
+    }
+}
+
+/* Mobile: Single Page Layout */
+@media (max-width: 768px) {
+    .magazine-container {
+        flex-direction: row;
+        gap: var(--spacing-xs);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .magazine-spread {
+        flex-direction: column;
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hide left page on mobile - show only content page */
+    .magazine-page-left {
+        display: none;
+    }
+
+    /* Right page becomes the only visible page */
+    .magazine-page-right {
+        width: 100%;
+        height: auto;
+        min-height: 450px;
+    }
+
+    .magazine-page-right .page-content {
+        padding: var(--spacing-md);
+    }
+
+    /* Add cover image as header inside the content page on mobile */
+    .magazine-page-right::before {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 180px;
+        background: linear-gradient(135deg, var(--color-gray-200) 0%, var(--color-gray-300) 100%);
+    }
+
+    .magazine-nav {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .nav-arrow {
+        font-size: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-description {
+        font-size: 0.875rem;
+    }
+
+    .page-footer {
+        margin-top: auto;
+    }
+
+    .magazine-thumbnails {
+        gap: var(--spacing-xs);
+        overflow-x: auto;
+        padding: var(--spacing-sm) 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .thumbnail {
+        min-width: 60px;
+        padding: var(--spacing-xs);
+        flex-shrink: 0;
+    }
+
+    .thumbnail-number {
+        font-size: 0.875rem;
+    }
+
+    .thumbnail-title {
+        display: none;
+    }
+
+    .magazine-hint {
+        font-size: 0.75rem;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .magazine-spread {
+        min-height: 400px;
+    }
+
+    .magazine-page-right {
+        min-height: 380px;
+    }
+
+    .page-content {
+        padding: var(--spacing-sm);
+    }
+
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .page-meta {
+        font-size: 0.7rem;
+    }
+
+    .page-description {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+
+    .magazine-nav {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Magazine Hint */
+.magazine-hint {
+    text-align: center;
+    margin-top: var(--spacing-md);
+    font-size: 0.875rem;
+    color: var(--color-gray-600);
+    font-style: italic;
+}

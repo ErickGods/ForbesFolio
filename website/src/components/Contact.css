@@ -1,0 +1,118 @@
+.contact {
+    background-color: var(--color-white);
+}
+
+.contact-intro {
+    max-width: 600px;
+    margin: var(--spacing-sm) auto 0;
+    font-size: 1.125rem;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contact-item-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-item-link {
+    font-size: 1.125rem;
+    color: var(--color-gray-800);
+}
+
+.contact-item-link:hover {
+    color: var(--color-gold);
+}
+
+.contact-item-text {
+    font-size: 1.125rem;
+    color: var(--color-gray-800);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.social-link {
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+    transition: color var(--transition-fast);
+}
+
+.social-link:hover {
+    color: var(--color-gold);
+}
+
+/* Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: var(--color-gray-800);
+}
+
+.form-input,
+.form-textarea {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--color-gray-200);
+    background-color: var(--color-gray-100);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    background-color: var(--color-white);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+@media (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+}
