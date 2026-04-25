@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'website/**'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
@@ -16,6 +19,7 @@ concurrency:
 
 jobs:
   build:
+    name: 🏗️ Build & Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -32,6 +36,10 @@ jobs:
         run: npm ci
         working-directory: website
 
+      - name: Run ESLint
+        run: npm run lint
+        working-directory: website
+
       - name: Build
         run: npm run build
         working-directory: website
@@ -45,6 +53,7 @@ jobs:
           path: website/dist
 
   deploy:
+    name: 🚀 Deploy
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
