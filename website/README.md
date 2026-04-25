@@ -1,92 +1,66 @@
 # ForbesFolio
 
-[![Deploy to GitHub Pages](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml)
-[![CI — Lint & Build](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml)
+[![Deploy](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml)
+[![CI](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml)
 
-> 🌐 **Live:** [erickgods.github.io/ForbesFolio](https://erickgods.github.io/ForbesFolio)
+> 🌐 [erickgods.github.io/ForbesFolio](https://erickgods.github.io/ForbesFolio)
 
-A developer portfolio inspired by Forbes magazine aesthetic, built with React + Vite and deployed via GitHub Pages with a full CI/CD pipeline.
-
----
+Meu portfólio pessoal com estética inspirada na Forbes, construído com React + Vite e deploy automatizado via GitHub Pages.
 
 ## ✨ Features
 
-- 📰 Magazine-style page flip animations (Framer Motion)
-- 🎨 Forbes-inspired design with Playfair Display & Inter fonts
-- 📱 Fully responsive layout
-- ♿ ARIA-compliant navigation and keyboard support
-- ⚡ Built with Vite for fast development and optimized builds
+- 📰 Animação de virar página estilo revista (Framer Motion)
+- 🎨 Design Forbes com Playfair Display & Inter
+- 📱 Layout responsivo
+- ♿ Navegação acessível com suporte a teclado
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|-----------|---------|
-| React 18 | UI framework |
-| Vite 5 | Build tool & dev server |
-| Framer Motion | Animations |
-| Vanilla CSS | Styling with custom properties |
-| GitHub Actions | CI/CD pipeline |
+| Tecnologia | Uso |
+|-----------|-----|
+| React 18 | UI |
+| Vite 5 | Build & dev server |
+| Framer Motion | Animações |
+| Vanilla CSS | Estilos com custom properties |
+| GitHub Actions | CI/CD |
 | GitHub Pages | Hosting |
 
-## 🚀 CI/CD Pipeline
+## 🚀 Pipeline CI/CD
 
-Every change goes through an automated pipeline:
+Cada mudança segue o fluxo:
 
 ```
-Issue → Branch → PR → CI (Lint + Build) → Review → Merge → Deploy
+Issue → Branch → PR → CI (Lint + Validate + Build) → Merge → Deploy automático
 ```
 
-| Workflow | Trigger | Description |
-|----------|---------|-------------|
-| **CI** | PR to `main` | Runs ESLint + build check |
-| **PR Preview** | PR to `main` | Generates downloadable build artifact |
-| **Deploy** | Push to `main` | Builds and deploys to GitHub Pages |
+| Workflow | Trigger | O que faz |
+|----------|---------|-----------|
+| **CI** | PR → `main` | Roda ESLint + valida projetos + build |
+| **Preview** | PR → `main` | Gera artifact do build para review |
+| **Deploy** | Push → `main` | Build + deploy para GitHub Pages |
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for the full development workflow.
+## 📂 Adicionando um Novo Projeto
 
-## 📦 Getting Started
+1. Abrir Issue com template **"📂 New Project"**
+2. Criar branch `feature/add-<nome>`
+3. Preencher `projects/<slug>/README.md` (copiar de `_template/`)
+4. Adicionar cover image em `website/public/images/projects/`
+5. Registrar em `website/src/data/projects.js`
+6. Abrir PR → CI valida → Merge → Nova página na revista
+
+## 📦 Dev Local
 
 ```bash
-# Clone
-git clone https://github.com/ErickGods/ForbesFolio.git
-cd ForbesFolio/website
-
-# Install
+cd website
 npm install
-
-# Dev server
-npm run dev
-
-# Lint
-npm run lint
-
-# Build
-npm run build
+npm run dev       # Dev server
+npm run lint      # ESLint
+npm run validate  # Valida dados dos projetos
+npm run build     # Build produção
 ```
 
-## 📊 What's Inside
-
-- 📊 Data Analysis & Visualization
-- ⚙️ Automation with Python
-- 💻 Web & App Development
-- 🧠 Machine Learning Experiments
-- 📱 Power Platform Solutions (Power BI, Power Apps, Power Automate)
-- 🗂️ Case Studies & Business Projects
-
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for guidelines on:
-- Branch naming conventions
-- Commit message format
-- PR process and templates
-- CI/CD pipeline details
-
-## 📬 Contact
+## 📬 Contato
 
 - **LinkedIn:** [erickpdias](https://www.linkedin.com/in/erickpdias/)
 - **GitHub:** [ErickGods](https://github.com/ErickGods)
 - **Email:** erickpassosdias@gmail.com
-
----
-
-Credits: Design inspired by [Forbes](https://forbes.com.br/)
