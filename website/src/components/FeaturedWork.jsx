@@ -1,66 +1,13 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import PROJECTS from '../data/projects'
 import './FeaturedWork.css'
 
-// Base URL for images (works for both dev and GitHub Pages)
-const BASE_URL = import.meta.env.BASE_URL
-
 // ============================================
-// DATA - Extracted outside component to prevent re-renders
+// DATA - Imported from centralized projects data file
+// To add a new project page, edit: src/data/projects.js
 // ============================================
-const WORKS_DATA = [
-    {
-        id: 1,
-        title: 'Brand Identity Design',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
-        category: 'Branding',
-        year: '2024',
-        description: 'A complete visual identity overhaul for a luxury fashion brand, including logo design, color palette, typography system, and comprehensive brand guidelines.',
-        client: 'Luxe Atelier',
-        role: 'Lead Designer',
-    },
-    {
-        id: 2,
-        title: 'E-Commerce Platform',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
-        category: 'Web Development',
-        year: '2024',
-        description: 'Full-stack development of a modern e-commerce platform with seamless checkout experience, inventory management, and analytics dashboard.',
-        client: 'Modern Retail Co.',
-        role: 'Full-Stack Developer',
-    },
-    {
-        id: 3,
-        title: 'Mobile Banking App',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
-        category: 'UI/UX Design',
-        year: '2023',
-        description: 'User experience design and interface development for a fintech startup, focusing on intuitive navigation and security-first approach.',
-        client: 'FinFlow',
-        role: 'UX Designer',
-    },
-    {
-        id: 4,
-        title: 'Corporate Website Redesign',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
-        category: 'Web Design',
-        year: '2023',
-        description: 'Complete redesign of a Fortune 500 company website with improved accessibility, performance optimization, and modern visual language.',
-        client: 'Global Corp',
-        role: 'Creative Director',
-    },
-    {
-        id: 5,
-        title: 'SaaS Dashboard',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
-        category: 'Product Design',
-        year: '2023',
-        description: 'Complex data visualization dashboard for enterprise analytics platform, featuring real-time updates and customizable widgets.',
-        client: 'DataViz Pro',
-        role: 'Product Designer',
-    },
-]
-
+const WORKS_DATA = PROJECTS
 
 const TOTAL_PAGES = WORKS_DATA.length
 
