@@ -1,94 +1,66 @@
 // ============================================
 // ForbesFolio — Projects Data
 // ============================================
-// This is the single source of truth for all portfolio projects.
-// Each entry here becomes a "page" in the magazine.
+// Fonte única de dados para todos os projetos do portfólio.
+// Cada entrada aqui vira uma "página" na revista.
 //
-// HOW TO ADD A NEW PROJECT:
-// 1. Create a folder: projects/<slug>/README.md (use the template)
-// 2. Add cover image to: website/public/images/projects/<slug>.jpg
-// 3. Add a new entry to the PROJECTS array below
-// 4. Open a PR — CI will validate everything
+// PARA ADICIONAR UM NOVO PROJETO:
+// 1. Criar pasta: projects/<slug>/README.md (usar o template)
+// 2. Adicionar cover image em: website/public/images/projects/<slug>.png
+// 3. Adicionar nova entrada no array PROJECTS abaixo
+// 4. Abrir PR → CI valida automaticamente
 // ============================================
 
 const BASE_URL = import.meta.env.BASE_URL
 
-/**
- * @typedef {Object} Project
- * @property {string} id          - Unique identifier (slug)
- * @property {string} title       - Display title for the magazine page
- * @property {string} coverImage  - Path to the cover image
- * @property {string} category    - Project category
- * @property {string} year        - Year completed
- * @property {string} description - Brief description (1-3 sentences)
- * @property {string} client      - Client or company name
- * @property {string} role        - Your role in the project
- * @property {string[]} technologies - Main technologies used
- * @property {string} [demoUrl]   - Optional live demo URL
- * @property {string} [repoUrl]   - Optional repository URL
- */
-
-/** @type {Project[]} */
 const PROJECTS = [
     {
-        id: 'brand-identity',
-        title: 'Brand Identity Design',
-        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
-        category: 'Branding',
+        id: 'vault-tech-website',
+        title: 'Vault Tech — Website Corporativo',
+        coverImage: `${BASE_URL}images/projects/vault-tech-website.png`,
+        category: 'Web Development',
         year: '2025',
         description:
-            'A complete visual identity overhaul for a luxury fashion brand, including logo design, color palette, typography system, and comprehensive brand guidelines.',
+            'Redesign completo do website corporativo da Vault Tech com identidade visual moderna, ícones SVG profissionais, estética glassmorphism e deploy automatizado via GitHub Actions.',
         client: 'Vault Tech',
-        role: 'Lead Designer',
-        technologies: ['Figma', 'Illustrator', 'After Effects'],
-    },
-    {
-        id: 'ecommerce-platform',
-        title: 'E-Commerce Platform',
-        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
-        category: 'Web Development',
-        year: '2024',
-        description:
-            'Full-stack development of a modern e-commerce platform with seamless checkout experience, inventory management, and analytics dashboard.',
-        client: 'Modern Retail Co.',
         role: 'Full-Stack Developer',
-        technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
+        technologies: ['HTML/CSS/JS', 'SVG', 'GitHub Actions', 'HostGator'],
     },
     {
-        id: 'mobile-banking',
-        title: 'Mobile Banking App',
-        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
-        category: 'UI/UX Design',
-        year: '2023',
+        id: 'aquarela-ecommerce',
+        title: 'Aquarela — E-Commerce',
+        coverImage: `${BASE_URL}images/projects/aquarela-ecommerce.png`,
+        category: 'Web Development',
+        year: '2025',
         description:
-            'User experience design and interface development for a fintech startup, focusing on intuitive navigation and security-first approach.',
-        client: 'FinFlow',
-        role: 'UX Designer',
-        technologies: ['Figma', 'React Native', 'Firebase'],
+            'Plataforma de e-commerce full-stack para joias e acessórios, com catálogo de produtos, carrinho, checkout completo e integração com gateway de pagamento AbacatePay.',
+        client: 'BYDIO / Aquarela',
+        role: 'Full-Stack Developer',
+        technologies: ['HTML/CSS/JS', 'Laravel', 'AbacatePay', 'Tailwind CSS'],
     },
     {
-        id: 'corporate-website',
-        title: 'Corporate Website Redesign',
-        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
-        category: 'Web Design',
-        year: '2023',
+        id: 'vtraining',
+        title: 'VTraining — Portal Esportivo',
+        coverImage: `${BASE_URL}images/projects/vtraining.png`,
+        category: 'Web Development',
+        year: '2025',
         description:
-            'Complete redesign of a Fortune 500 company website with improved accessibility, performance optimization, and modern visual language.',
-        client: 'Global Corp',
-        role: 'Creative Director',
-        technologies: ['Next.js', 'Tailwind CSS', 'Vercel'],
+            'Portal de avaliações esportivas para personal trainers e atletas, com autenticação multi-perfil, dashboard de métricas e gestão de avaliações físicas.',
+        client: 'VTraining',
+        role: 'Full-Stack Developer',
+        technologies: ['Next.js 15', 'Supabase', 'Tailwind CSS v4', 'TypeScript'],
     },
     {
-        id: 'saas-dashboard',
-        title: 'SaaS Dashboard',
-        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
-        category: 'Product Design',
-        year: '2023',
+        id: 'forbesfolio',
+        title: 'ForbesFolio — Portfolio CI/CD',
+        coverImage: `${BASE_URL}images/projects/forbesfolio.png`,
+        category: 'DevOps',
+        year: '2025',
         description:
-            'Complex data visualization dashboard for enterprise analytics platform, featuring real-time updates and customizable widgets.',
-        client: 'DataViz Pro',
-        role: 'Product Designer',
-        technologies: ['React', 'D3.js', 'GraphQL', 'AWS'],
+            'Portfolio pessoal com estética de revista Forbes, pipeline CI/CD completo com GitHub Actions, validação automatizada de projetos e deploy automático para GitHub Pages.',
+        client: 'Projeto Pessoal',
+        role: 'Full-Stack Developer',
+        technologies: ['React 18', 'Vite 5', 'Framer Motion', 'GitHub Actions', 'ESLint'],
     },
 ]
 
