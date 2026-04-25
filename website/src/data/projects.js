@@ -33,7 +33,7 @@ const PROJECTS = [
     {
         id: 'brand-identity',
         title: 'Brand Identity Design',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
+        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
         category: 'Branding',
         year: '2025',
         description:
@@ -45,7 +45,7 @@ const PROJECTS = [
     {
         id: 'ecommerce-platform',
         title: 'E-Commerce Platform',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
+        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
         category: 'Web Development',
         year: '2024',
         description:
@@ -57,7 +57,7 @@ const PROJECTS = [
     {
         id: 'mobile-banking',
         title: 'Mobile Banking App',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
+        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
         category: 'UI/UX Design',
         year: '2023',
         description:
@@ -69,7 +69,7 @@ const PROJECTS = [
     {
         id: 'corporate-website',
         title: 'Corporate Website Redesign',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
+        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
         category: 'Web Design',
         year: '2023',
         description:
@@ -81,7 +81,7 @@ const PROJECTS = [
     {
         id: 'saas-dashboard',
         title: 'SaaS Dashboard',
-        coverImage: `${BASE_URL}images/Forbes-Logo.jpg`,
+        coverImage: `${BASE_URL}images/Forbes-logo.jpg`,
         category: 'Product Design',
         year: '2023',
         description:
