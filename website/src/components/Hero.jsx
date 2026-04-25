@@ -14,7 +14,7 @@ function Hero() {
                         functional, and business-centered digital products.
                     </p>
                     <div className="hero-actions">
-                        <a href="#portfolio" className="btn btn-primary">View My Work</a>
+                        <a href="#featured-work" className="btn btn-primary">View My Work</a>
                         <a href="#contact" className="btn btn-outline">Get in Touch</a>
                     </div>
                 </div>
