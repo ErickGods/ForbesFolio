@@ -1,25 +1,66 @@
-# My Developer Portfolio
+# ForbesFolio
 
-Welcome to my portfolio repository!  
-This space showcases a collection of projects I’ve worked on — ranging from data analysis and automation scripts to web development and app design.
+[![Deploy](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/deploy.yml)
+[![CI](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml/badge.svg)](https://github.com/ErickGods/ForbesFolio/actions/workflows/ci.yml)
 
-Each project highlights different skills and technologies I've used and learned throughout my journey. Feel free to explore the folders to see source code, datasets, and documentation for each one.
+> 🌐 [erickgods.github.io/ForbesFolio](https://erickgods.github.io/ForbesFolio)
 
-## What's Inside
+Meu portfólio pessoal com estética inspirada na Forbes, construído com React + Vite e deploy automatizado via GitHub Pages.
 
-- 📊 Data Analysis & Visualization
-- ⚙️ Automation with Python  
-- 💻 Web & App Development  
-- 🧠 Machine Learning Experiments  
-- 📱 Power Platform Solutions (Power BI, Power Apps, Power Automate)  
-- 🗂️ Case Studies & Business Projects
+## ✨ Features
 
-I'm constantly updating this space with new content and improvements.  
-Check back often, or connect with me on [LinkedIn](https://www.linkedin.com/in/erickpdias/) to stay in the loop.
+- 📰 Animação de virar página estilo revista (Framer Motion)
+- 🎨 Design Forbes com Playfair Display & Inter
+- 📱 Layout responsivo
+- ♿ Navegação acessível com suporte a teclado
 
-**Thanks for visiting!**
+## 🛠️ Tech Stack
 
+| Tecnologia | Uso |
+|-----------|-----|
+| React 18 | UI |
+| Vite 5 | Build & dev server |
+| Framer Motion | Animações |
+| Vanilla CSS | Estilos com custom properties |
+| GitHub Actions | CI/CD |
+| GitHub Pages | Hosting |
 
+## 🚀 Pipeline CI/CD
 
-Credits:
-https://forbes.com.br/
+Cada mudança segue o fluxo:
+
+```
+Issue → Branch → PR → CI (Lint + Validate + Build) → Merge → Deploy automático
+```
+
+| Workflow | Trigger | O que faz |
+|----------|---------|-----------|
+| **CI** | PR → `main` | Roda ESLint + valida projetos + build |
+| **Preview** | PR → `main` | Gera artifact do build para review |
+| **Deploy** | Push → `main` | Build + deploy para GitHub Pages |
+
+## 📂 Adicionando um Novo Projeto
+
+1. Abrir Issue com template **"📂 New Project"**
+2. Criar branch `feature/add-<nome>`
+3. Preencher `projects/<slug>/README.md` (copiar de `_template/`)
+4. Adicionar cover image em `website/public/images/projects/`
+5. Registrar em `website/src/data/projects.js`
+6. Abrir PR → CI valida → Merge → Nova página na revista
+
+## 📦 Dev Local
+
+```bash
+cd website
+npm install
+npm run dev       # Dev server
+npm run lint      # ESLint
+npm run validate  # Valida dados dos projetos
+npm run build     # Build produção
+```
+
+## 📬 Contato
+
+- **LinkedIn:** [erickpdias](https://www.linkedin.com/in/erickpdias/)
+- **GitHub:** [ErickGods](https://github.com/ErickGods)
+- **Email:** erickpassosdias@gmail.com
