@@ -46,7 +46,7 @@ const CoverPage = forwardRef(function CoverPage({ project, pageNumber }, ref) {
  * Content Page — Editorial text layout
  * Represents the text/right page of a magazine spread
  */
-const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total }, ref) {
+const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total, onOpenProject }, ref) {
     return (
         <div className="magazine-page content-page" ref={ref}>
             {/* Gutter shadow on the spine side */}
@@ -87,6 +87,14 @@ const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total
                         Project {pageNumber} of {total}
                     </span>
                 </div>
+                
+                <button 
+                    className="btn btn-primary" 
+                    style={{ marginTop: '1.5rem', width: '100%', padding: '0.8rem' }}
+                    onClick={() => onOpenProject && onOpenProject(project)}
+                >
+                    Read Full Case Study
+                </button>
             </div>
         </div>
     )
@@ -210,7 +218,10 @@ const InsideBackCover = forwardRef(function InsideBackCover(props, ref) {
 // ============================================
 // MAIN COMPONENT
 // ============================================
-function FeaturedWork() {
+/**
+ * Main Featured Work Component
+ */
+function FeaturedWork({ onOpenProject }) {
     const bookRef = useRef(null)
     const [currentPage, setCurrentPage] = useState(0)
     const [isFlipping, setIsFlipping] = useState(false)
@@ -330,11 +341,12 @@ function FeaturedWork() {
                                 project={project}
                                 pageNumber={index + 1}
                             />,
-                            <ContentPage
+                            <ContentPage 
                                 key={`content-${project.id}`}
-                                project={project}
-                                pageNumber={index + 1}
+                                project={project} 
+                                pageNumber={index + 1} 
                                 total={TOTAL_PROJECTS}
+                                onOpenProject={onOpenProject}
                             />,
                         ])}
 
