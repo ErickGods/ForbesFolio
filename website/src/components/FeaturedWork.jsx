@@ -247,11 +247,20 @@ function FeaturedWork() {
 
     // Calculate which project we're viewing
     // Projects start at index 3 (Page 4).
-    const currentProjectIndex = Math.max(0, Math.floor((currentPage - 3) / 2))
+    const isProjectPage = currentPage >= 3 && currentPage < 3 + TOTAL_PROJECTS * 2
+    const currentProjectIndex = Math.min(TOTAL_PROJECTS - 1, Math.max(0, Math.floor((currentPage - 3) / 2)))
     const totalBookPages = 6 + TOTAL_PROJECTS * 2 // front, insideFront, intro, projects*2, outro, insideBack, back
     const isOnFrontCover = currentPage === 0
     const isOnBackCover = currentPage >= totalBookPages - 1
     const isOnCover = isOnFrontCover || isOnBackCover
+
+    // Determine what to show in the pagination counter
+    let paginationText = ""
+    if (isOnFrontCover) paginationText = "Cover"
+    else if (currentPage === 1 || currentPage === 2) paginationText = "Intro"
+    else if (isProjectPage) paginationText = `Project ${currentProjectIndex + 1} of ${TOTAL_PROJECTS}`
+    else if (isOnBackCover) paginationText = "Back Cover"
+    else paginationText = "End"
 
     return (
         <section
@@ -347,9 +356,8 @@ function FeaturedWork() {
                         <span className="nav-arrow" aria-hidden="true">‹</span>
                         <span className="nav-text">Prev</span>
                     </button>
-
                     <span className="flipbook-page-info">
-                        {isOnCover ? 'Cover' : `Project ${currentProjectIndex + 1} of ${TOTAL_PROJECTS}`}
+                        {paginationText}
                     </span>
 
                     <button

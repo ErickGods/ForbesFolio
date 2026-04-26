@@ -4,6 +4,8 @@
     align-items: center;
     padding-top: 80px;
     background: linear-gradient(135deg, var(--color-white) 0%, var(--color-gray-100) 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-container {
@@ -11,6 +13,12 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
     align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    transition: transform 0.1s ease-out;
 }
 
 .hero-tagline {
@@ -42,12 +50,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.hero-background-text {
+    position: absolute;
+    font-family: var(--font-serif);
+    font-size: 25vw;
+    font-weight: 700;
+    color: var(--color-gray-200);
+    z-index: 0;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: transform 0.1s ease-out;
 }
 
 .hero-image-frame {
     position: relative;
     width: 400px;
     height: 500px;
+    z-index: 1;
+    transition: transform 0.1s ease-out;
 }
 
 .hero-image-frame::before {
@@ -100,4 +127,151 @@
         width: 250px;
         height: 312px;
     }
+}
+
+/* ============================================
+   HERO ANIMATIONS & PREMIUM EFFECTS
+   ============================================ */
+
+/* Film Grain */
+.hero-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Text Reveal Animation */
+.reveal-word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-bottom: 0.1em; /* Prevent clipping descenders */
+    margin-right: 0.15em;
+}
+
+.reveal-word {
+    display: inline-block;
+    animation: revealUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform: translateY(110%);
+}
+
+.reveal-text {
+    animation: revealFade 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+@keyframes revealUp {
+    0% {
+        opacity: 0;
+        transform: translateY(110%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes revealFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Magnetic Buttons Simulation */
+.magnetic-btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.magnetic-btn:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.magnetic-btn::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: -1;
+}
+
+.magnetic-btn:hover::after {
+    transform: translateY(-100%);
+}
+
+.btn-primary.magnetic-btn::after {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-outline.magnetic-btn::after {
+    background: var(--color-black);
+}
+
+.btn-outline.magnetic-btn:hover {
+    color: var(--color-white);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    z-index: 5;
+    opacity: 0;
+    animation: revealFade 1s ease 1.5s forwards;
+}
+
+.scroll-text {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--color-gray-600);
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--color-gold);
+    animation: scrollDrop 2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+@keyframes scrollDrop {
+    0% { transform: translateY(-100%); }
+    40%, 100% { transform: translateY(200%); }
 }
