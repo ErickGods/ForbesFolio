@@ -137,6 +137,44 @@ const InsideFrontCover = forwardRef(function InsideFrontCover(props, ref) {
 })
 
 /**
+ * Portfolio Intro — Right side page before projects
+ */
+const PortfolioIntro = forwardRef(function PortfolioIntro(props, ref) {
+    return (
+        <div className="magazine-page intro-page" ref={ref}>
+            <div className="page-texture" />
+            <div className="page-gutter-shadow page-gutter-left" />
+            <div className="intro-content" style={{ padding: '3rem', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <p className="section-tagline" style={{ marginBottom: '1rem' }}>Selected Works</p>
+                <h3 className="page-title" style={{ fontSize: '2.5rem' }}>A collection<br/>of digital<br/>experiences.</h3>
+                <div className="divider" style={{ margin: '2rem 0' }} />
+                <p className="page-description">
+                    Each project in this portfolio represents a unique challenge and a tailored solution. 
+                    Browse through to see how I blend design and engineering to create impactful web applications.
+                </p>
+            </div>
+        </div>
+    )
+})
+
+/**
+ * Outro Page — Left side page after projects
+ */
+const OutroPage = forwardRef(function OutroPage(props, ref) {
+    return (
+        <div className="magazine-page outro-page" ref={ref}>
+            <div className="page-texture" />
+            <div className="page-gutter-shadow page-gutter-right" />
+            <div className="outro-content" style={{ padding: '3rem', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span className="back-cover-logo" style={{ color: 'var(--color-gray-300)', fontSize: '2rem' }}>
+                    Forbes<span className="text-gold">Folio</span>
+                </span>
+            </div>
+        </div>
+    )
+})
+
+/**
  * Back Cover — Last page of the magazine
  */
 const BackCover = forwardRef(function BackCover(props, ref) {
@@ -207,10 +245,11 @@ function FeaturedWork() {
         return () => window.removeEventListener('keydown', handleKeyDown)
     }, [])
 
-    // Calculate which project we're viewing (accounting for front cover + inside front cover)
-    const currentProjectIndex = Math.max(0, Math.floor((currentPage - 2) / 2))
-    const isOnCover = currentPage < 2 || currentPage >= TOTAL_PROJECTS * 2 + 2
-    const totalBookPages = 4 + TOTAL_PROJECTS * 2 // front+inside front, projects*2, inside back+back
+    // Calculate which project we're viewing
+    // Projects start at index 3 (Page 4).
+    const currentProjectIndex = Math.max(0, Math.floor((currentPage - 3) / 2))
+    const totalBookPages = 6 + TOTAL_PROJECTS * 2 // front, insideFront, intro, projects*2, outro, insideBack, back
+    const isOnCover = currentPage === 0 || currentPage >= totalBookPages - 1
 
     return (
         <section
@@ -232,8 +271,12 @@ function FeaturedWork() {
 
                 {/* Flipbook */}
                 <div className={`flipbook-wrapper ${isFlipping ? 'is-flipping' : ''} ${bookReady ? 'is-ready' : ''}`}>
-                    {/* Spine indicator */}
-                    <div className="magazine-spine" aria-hidden="true" />
+                    {/* Spine indicator (hidden on covers) */}
+                    <div 
+                        className="magazine-spine" 
+                        aria-hidden="true" 
+                        style={{ opacity: isOnCover ? 0 : '' }}
+                    />
 
                     <HTMLFlipBook
                         ref={bookRef}
@@ -265,6 +308,9 @@ function FeaturedWork() {
                         {/* Front Cover & Inside Front Cover */}
                         <FrontCover />
                         <InsideFrontCover />
+                        
+                        {/* Intro Page */}
+                        <PortfolioIntro />
 
                         {/* Project Pages: Cover + Content for each */}
                         {WORKS_DATA.flatMap((project, index) => [
@@ -281,7 +327,8 @@ function FeaturedWork() {
                             />,
                         ])}
 
-                        {/* Inside Back Cover & Back Cover */}
+                        {/* Outro, Inside Back Cover & Back Cover */}
+                        <OutroPage />
                         <InsideBackCover />
                         <BackCover />
                     </HTMLFlipBook>
@@ -323,7 +370,7 @@ function FeaturedWork() {
                         <button
                             key={work.id}
                             className={`thumbnail ${currentProjectIndex === index && !isOnCover ? 'active' : ''}`}
-                            onClick={() => bookRef.current?.pageFlip().flip(2 + index * 2)}
+                            onClick={() => bookRef.current?.pageFlip().flip(3 + index * 2)}
                             aria-label={`Go to project ${index + 1}: ${work.title}`}
                             aria-current={currentProjectIndex === index && !isOnCover ? 'true' : undefined}
                         >
