@@ -41,19 +41,46 @@
 
 .magazine-flipbook {
     transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    border-radius: 2px;
+    position: relative; /* For the shadow pseudo-element */
+}
+
+/* Base Shadow Element using ::after so we can resize it on covers */
+.magazine-flipbook::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     box-shadow:
         0 25px 60px rgba(0, 0, 0, 0.2),
         0 10px 20px rgba(0, 0, 0, 0.1),
         0 0 0 1px rgba(0, 0, 0, 0.05);
     border-radius: 2px;
+    z-index: -1;
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 /* Flipping state — enhance shadow */
-.flipbook-wrapper.is-flipping .magazine-flipbook {
+.flipbook-wrapper.is-flipping .magazine-flipbook::after {
     box-shadow:
         0 35px 80px rgba(0, 0, 0, 0.3),
         0 15px 30px rgba(0, 0, 0, 0.15),
         0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+/* When closed on front cover, the shadow only covers the right half */
+.flipbook-wrapper.on-front-cover .magazine-flipbook::after {
+    left: 50%;
+    width: 50%;
+}
+
+/* When closed on back cover, the shadow only covers the left half */
+.flipbook-wrapper.on-back-cover .magazine-flipbook::after {
+    left: 0;
+    width: 50%;
 }
 
 /* ============================================

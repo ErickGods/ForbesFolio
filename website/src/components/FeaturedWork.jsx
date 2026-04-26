@@ -249,7 +249,9 @@ function FeaturedWork() {
     // Projects start at index 3 (Page 4).
     const currentProjectIndex = Math.max(0, Math.floor((currentPage - 3) / 2))
     const totalBookPages = 6 + TOTAL_PROJECTS * 2 // front, insideFront, intro, projects*2, outro, insideBack, back
-    const isOnCover = currentPage === 0 || currentPage >= totalBookPages - 1
+    const isOnFrontCover = currentPage === 0
+    const isOnBackCover = currentPage >= totalBookPages - 1
+    const isOnCover = isOnFrontCover || isOnBackCover
 
     return (
         <section
@@ -270,7 +272,7 @@ function FeaturedWork() {
                 </div>
 
                 {/* Flipbook */}
-                <div className={`flipbook-wrapper ${isFlipping ? 'is-flipping' : ''} ${bookReady ? 'is-ready' : ''}`}>
+                <div className={`flipbook-wrapper ${isFlipping ? 'is-flipping' : ''} ${bookReady ? 'is-ready' : ''} ${isOnFrontCover ? 'on-front-cover' : ''} ${isOnBackCover ? 'on-back-cover' : ''}`}>
                     {/* Spine indicator (hidden on covers) */}
                     <div 
                         className="magazine-spine" 
