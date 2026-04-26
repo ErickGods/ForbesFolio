@@ -42,7 +42,7 @@ function ProjectDetail({ project, onClose }) {
                 {/* Hero Section */}
                 <header className="pd-hero">
                     <div className="pd-hero-bg">
-                        <img src={project.image} alt={project.title} />
+                        <img src={project.coverImage} alt={project.title} />
                         <div className="pd-hero-gradient"></div>
                     </div>
                     <div className="pd-container pd-hero-content">
@@ -56,11 +56,11 @@ function ProjectDetail({ project, onClose }) {
                     <aside className="pd-sidebar">
                         <div className="pd-meta">
                             <span className="pd-meta-label">Role</span>
-                            <span className="pd-meta-value">Lead Designer & Developer</span>
+                            <span className="pd-meta-value">{project.role || 'Lead Designer & Developer'}</span>
                         </div>
                         <div className="pd-meta">
                             <span className="pd-meta-label">Year</span>
-                            <span className="pd-meta-value">2024</span>
+                            <span className="pd-meta-value">{project.year || '2025'}</span>
                         </div>
                         <div className="pd-meta">
                             <span className="pd-meta-label">Tech Stack</span>
@@ -70,7 +70,7 @@ function ProjectDetail({ project, onClose }) {
                                 ))}
                             </div>
                         </div>
-                        {project.link !== '#' && (
+                        {project.link && project.link !== '#' && (
                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="btn btn-primary pd-link">
                                 Visit Live Site
                             </a>
@@ -89,12 +89,12 @@ function ProjectDetail({ project, onClose }) {
                         <h2>The Solution</h2>
                         <p>
                             We adopted a design-first approach, wireframing the entire user journey before writing a single 
-                            line of code. By leveraging modern web technologies like React and advanced CSS, we built a 
-                            fluid, app-like interface that feels native on any device.
+                            line of code. By leveraging modern web technologies and advanced CSS, we built a 
+                            fluid, premium interface that engages users.
                         </p>
 
                         <div className="pd-gallery">
-                            <img src={project.image} alt={`${project.title} screenshot 1`} className="pd-gallery-img" />
+                            <img src={project.coverImage} alt={`${project.title} screenshot 1`} className="pd-gallery-img" />
                             {/* Placeholder for more images if the user provides them later */}
                         </div>
 
