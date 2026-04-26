@@ -5,9 +5,11 @@
 // Cada entrada aqui vira uma "página" na revista.
 //
 // PARA ADICIONAR UM NOVO PROJETO:
-// 1. Criar pasta: projects/<slug>/README.md (usar o template)
+// 1. Criar pasta: projects/<slug>/README.md (usar o template atualizado)
 // 2. Adicionar cover image em: website/public/images/projects/<slug>.png
-// 3. Adicionar nova entrada no array PROJECTS abaixo
+// 3. Adicionar nova entrada no array PROJECTS abaixo.
+//    (Opcional: preencha as props 'link', 'challenge', 'solution', 'result' 
+//    para popular o Modal de Deep Dive do projeto).
 // 4. Abrir PR → CI valida automaticamente
 // ============================================
 

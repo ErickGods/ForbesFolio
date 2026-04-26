@@ -80,17 +80,12 @@ function ProjectDetail({ project, onClose }) {
                     <article className="pd-content">
                         <h2>The Challenge</h2>
                         <p>
-                            In today's digital landscape, standing out requires more than just a functional product; 
-                            it requires an experience. For <strong>{project.title}</strong>, the main objective was to rethink 
-                            how users interact with the core features while ensuring absolute performance and stability 
-                            under high load.
+                            {project.challenge || `In today's digital landscape, standing out requires more than just a functional product; it requires an experience. For ${project.title}, the main objective was to rethink how users interact with the core features while ensuring absolute performance and stability under high load.`}
                         </p>
                         
                         <h2>The Solution</h2>
                         <p>
-                            We adopted a design-first approach, wireframing the entire user journey before writing a single 
-                            line of code. By leveraging modern web technologies and advanced CSS, we built a 
-                            fluid, premium interface that engages users.
+                            {project.solution || `We adopted a design-first approach, wireframing the entire user journey before writing a single line of code. By leveraging modern web technologies and advanced CSS, we built a fluid, premium interface that engages users.`}
                         </p>
 
                         <div className="pd-gallery">
@@ -100,8 +95,7 @@ function ProjectDetail({ project, onClose }) {
 
                         <h2>The Result</h2>
                         <p>
-                            A dramatic increase in user engagement and a significantly lower bounce rate. The architecture 
-                            is now fully scalable, ready to handle future feature expansions seamlessly.
+                            {project.result || `A dramatic increase in user engagement and a significantly lower bounce rate. The architecture is now fully scalable, ready to handle future feature expansions seamlessly.`}
                         </p>
                     </article>
                 </div>
