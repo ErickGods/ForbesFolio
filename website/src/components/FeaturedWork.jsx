@@ -91,7 +91,11 @@ const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total
                 <button 
                     className="btn btn-primary" 
                     style={{ marginTop: '1.5rem', width: '100%', padding: '0.8rem' }}
-                    onClick={() => onOpenProject && onOpenProject(project)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        if (onOpenProject) onOpenProject(project);
+                    }}
                 >
                     Read Full Case Study
                 </button>
