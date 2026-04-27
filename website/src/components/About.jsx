@@ -7,11 +7,6 @@ function About() {
         { number: '30+', label: 'Happy Clients' },
     ]
 
-    const skills = [
-        "React", "Next.js", "TypeScript", "Node.js", "Figma", 
-        "UI/UX Design", "Tailwind CSS", "GraphQL", "Framer Motion", "Supabase"
-    ]
-
     const processSteps = [
         { id: '01', title: 'Discover & Strategy', desc: 'Understanding your business goals and user needs to build a solid foundation.' },
         { id: '02', title: 'Design & Prototyping', desc: 'Crafting pixel-perfect, premium interfaces that engage and inspire.' },
@@ -63,22 +58,6 @@ function About() {
                                 </div>
                             ))}
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Infinite Marquee */}
-            <div className="tech-marquee-container">
-                <div className="tech-marquee">
-                    <div className="tech-marquee-content">
-                        {skills.map((skill, index) => (
-                            <span key={`skill-1-${index}`} className="marquee-item">{skill}</span>
-                        ))}
-                    </div>
-                    <div className="tech-marquee-content" aria-hidden="true">
-                        {skills.map((skill, index) => (
-                            <span key={`skill-2-${index}`} className="marquee-item">{skill}</span>
-                        ))}
                     </div>
                 </div>
             </div>
