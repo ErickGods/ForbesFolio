@@ -433,7 +433,7 @@ function FeaturedWork({ onOpenProject }) {
                         <button
                             key={work.id}
                             className={`thumbnail ${currentProjectIndex === index && !isOnCover ? 'active' : ''}`}
-                            onClick={() => bookRef.current?.pageFlip().flip(3 + index * 2)}
+                            onClick={() => bookRef.current?.pageFlip().turnToPage(3 + index * 2)}
                             aria-label={`Go to project ${index + 1}: ${work.title}`}
                             aria-current={currentProjectIndex === index && !isOnCover ? 'true' : undefined}
                         >

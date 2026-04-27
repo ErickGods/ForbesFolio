@@ -46,7 +46,9 @@ function ProjectDetail({ project, onClose }) {
                         <div className="pd-hero-gradient"></div>
                     </div>
                     <div className="pd-container pd-hero-content">
+                        <span className="pd-category">{project.category || 'Case Study'}</span>
                         <h1 className="pd-title">{project.title}</h1>
+                        <div className="pd-hero-divider" />
                         <p className="pd-tagline">{project.description}</p>
                     </div>
                 </header>
