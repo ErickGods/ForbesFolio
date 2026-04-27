@@ -28,3 +28,6 @@ pnpm-debug.log*
 # Local cache
 .cache/
 *.local
+
+# Private resumes (not pushed to GitHub)
+resumes/
