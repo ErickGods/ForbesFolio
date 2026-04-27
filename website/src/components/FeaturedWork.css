@@ -46,12 +46,6 @@
     /* For the shadow pseudo-element */
 }
 
-/* Dark background behind pages — prevents white flash
-   when the flip animation reveals the area behind covers */
-.magazine-flipbook .stf__block {
-    background-color: #1a1a1a;
-}
-
 /* Base Shadow Element using ::after so we can resize it on covers */
 .magazine-flipbook::after {
     content: '';
