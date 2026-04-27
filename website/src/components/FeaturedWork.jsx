@@ -47,6 +47,47 @@ const CoverPage = forwardRef(function CoverPage({ project, pageNumber }, ref) {
  * Represents the text/right page of a magazine spread
  */
 const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total, onOpenProject }, ref) {
+    const buttonRef = useRef(null);
+    const onOpenProjectRef = useRef(onOpenProject);
+    const projectRef = useRef(project);
+
+    // Keep refs in sync so the native listener always has fresh values
+    useEffect(() => {
+        onOpenProjectRef.current = onOpenProject;
+        projectRef.current = project;
+    }, [onOpenProject, project]);
+
+    useEffect(() => {
+        const btn = buttonRef.current;
+        if (!btn) return;
+
+        // Block pointer/mouse/touch so the flip library doesn't hijack the gesture
+        const stopGesture = (e) => {
+            e.stopPropagation();
+        };
+
+        // Native click handler — calls onOpenProject directly
+        const handleClick = (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (onOpenProjectRef.current) {
+                onOpenProjectRef.current(projectRef.current);
+            }
+        };
+
+        btn.addEventListener('pointerdown', stopGesture);
+        btn.addEventListener('mousedown', stopGesture);
+        btn.addEventListener('touchstart', stopGesture, { passive: false });
+        btn.addEventListener('click', handleClick);
+
+        return () => {
+            btn.removeEventListener('pointerdown', stopGesture);
+            btn.removeEventListener('mousedown', stopGesture);
+            btn.removeEventListener('touchstart', stopGesture);
+            btn.removeEventListener('click', handleClick);
+        };
+    }, []);
+
     return (
         <div className="magazine-page content-page" ref={ref}>
             {/* Gutter shadow on the spine side */}
@@ -89,13 +130,9 @@ const ContentPage = forwardRef(function ContentPage({ project, pageNumber, total
                 </div>
                 
                 <button 
+                    ref={buttonRef}
                     className="btn btn-primary" 
                     style={{ marginTop: '1.5rem', width: '100%', padding: '0.8rem' }}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        e.preventDefault();
-                        if (onOpenProject) onOpenProject(project);
-                    }}
                 >
                     Read Full Case Study
                 </button>
