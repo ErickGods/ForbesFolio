@@ -29,5 +29,18 @@ pnpm-debug.log*
 .cache/
 *.local
 
-# Private resumes (not pushed to GitHub)
+# ============================================
+# Private / Local-only (NOT for public repo)
+# ============================================
+
+# Private resumes with personal info (phone, email, etc.)
 resumes/
+
+# Obsidian knowledge base (personal vault)
+obsidian-vault/
+
+# Obsidian vault folder (legacy/duplicate)
+ForbesFolio/
+
+# Gemini / AI agent data
+.gemini/
